@@ -10,39 +10,6 @@ const auth0 = new Auth0(credentials);
 
 export default class AuthLoading extends Component {
   componentDidMount() {
-    // SInfo.getItem('accessToken', {}).then(accessToken => {
-    //   if (accessToken) {
-    //     auth0.auth
-    //       .userInfo({ token: accessToken })
-    //       .then(data => {
-    //         this.props.navigation.navigate('Main', { userdata: data });
-    //       })
-    //       .catch(err => {
-    //         SInfo.getItem('refreshToken', {}).then(refreshToken => {
-    //           auth0.auth
-    //             .refreshToken({ refreshToken: refreshToken })
-    //             .then(newAccessToken => {
-    //               SInfo.setItem('accessToken', newAccessToken);
-    //               this.props.navigation.navigate('Main', { userdata: newAccessToken.accessToken });
-    //               auth0.auth
-    //                 .userInfo({ token: newAccessToken })
-    //                 .then(data => {
-    //                   this.props.navigation.navigate('Main', { userdata: data });
-    //                 })
-    //                 .catch(err => {
-    //                   this.props.navigation.navigate('Login');
-    //                 })
-    //             })
-    //             .catch(accessTokenErr => {
-    //               this.props.navigation.navigate('Login');
-    //             });
-    //         });
-    //       });
-    //   } else {
-    //     this.props.navigation.navigate('Login');
-    //   }
-    // });
-
     SInfo.getItem('accessToken', {}).then(accessToken => {
       if (accessToken) {
         this.props.navigation.navigate('Main', { userdata: accessToken });
