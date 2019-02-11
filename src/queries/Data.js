@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import Loader from '../components/Loader';
@@ -12,7 +12,7 @@ export const InitialData = ({ token }) => (
         hello
       }
     `}
-    context={{ headers: { authorization: token.sub } }}
+    context={{ headers: { Authorization: 'Bearer ' + token } }}
   >
     {({ loading, error, data }) => {
       if (loading) return <Loader />;
