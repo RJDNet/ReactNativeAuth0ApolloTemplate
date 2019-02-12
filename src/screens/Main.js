@@ -13,10 +13,11 @@ const client = new ApolloClient({
 });
 
 export default class Main extends Component {
-  onLogout = () => {
+  onLogout = async () => {
     // if (Platform.OS === 'android') {
-    SInfo.deleteItem('accessToken', {});
-    SInfo.deleteItem('refreshToken', {});
+    await SInfo.deleteItem('accessToken', {});
+    await SInfo.deleteItem('currentDate', {});
+    await SInfo.deleteItem('expiresDate', {});
     this.props.navigation.navigate('Login');
 
     // Logout for IOS

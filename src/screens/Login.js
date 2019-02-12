@@ -11,13 +11,19 @@ export default class Login extends Component {
   componentDidMount() {
     auth0
       .webAuth
-      .authorize({ scope: 'openid offline_access', audience: 'https://rjd.eu.auth0.com/api/v2/', prompt: 'login' })
+      .authorize({ scope: 'openid email', audience: 'https://rjd.eu.auth0.com/api/v2/', prompt: 'login' })
       .then(credentials => {
+        let cDate = new Date;
+        let eDate = new Date;
+
+        SInfo.setItem('currentDate', cDate, {});
+        eDate.setMonth(eDate.getMonth() + 1);
+        SInfo.setItem('expiresDate', eDate, {});
         SInfo.setItem('accessToken', credentials.accessToken, {});
-        SInfo.setItem('refreshToken', credentials.refreshToken, {});
+
         this.props.navigation.navigate('Main', { userdata: credentials.accessToken });
       })
-      .catch(err => console.log('error occurred while trying to authenticate'));
+      .catch(err => console.log('error occurred while trying to authenticate', err));
   };
 
   render() {
