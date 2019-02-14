@@ -3,6 +3,7 @@ import { createSwitchNavigator, createStackNavigator, createAppContainer } from 
 
 import LoginScreen from "../screens/Login";
 import MainScreen from "../screens/Main";
+import AccountScreen from "../screens/Account";
 import AuthLoadingScreen from "../screens/AuthLoading";
 
 // Auth Stack
@@ -20,7 +21,8 @@ const AuthStack = createStackNavigator(
 // Main App Stack
 const AppStack = createStackNavigator(
   {
-    Main: MainScreen
+    Main: MainScreen,
+    Account: AccountScreen
   },
   {
     initialRouteName: 'Main',
